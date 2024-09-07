@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=430, height=932, initial-scale=1.0">
 
     <title>Pomodoro Timer</title>
     <style>
@@ -12,7 +13,7 @@
         html,
         body {
             width: 1080px;
-            height: 1900px;
+            height: 2400px;
             margin: 0;
             padding: 0;
             border: 1px solid black;
@@ -115,7 +116,14 @@
             const timerInterval = setInterval(() => {
                 let minutes = Math.floor(timeLeft / 60);
                 let seconds = timeLeft % 60;
-                timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                timerElement.textContent = $ {
+                    minutes
+                }: $ {
+                    seconds < 10 ? '0' : ''
+                }
+                $ {
+                    seconds
+                };
                 timeLeft--;
 
                 if (timeLeft < 0) {
