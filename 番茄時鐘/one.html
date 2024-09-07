@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout with Icons</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            width: 430px;
+            height: 932px;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            /* Center the page in the browser window */
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            padding-top: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .center-text {
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .right-icon {
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+        
+        .list {
+            margin-top: 20px;
+        }
+        
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 378px;
+            height: 62px;
+        }
+        
+        .placeholder {
+            width: 80%;
+            height: 30px;
+            background-color: #e0e0e0;
+            /* Placeholder for list content */
+        }
+        
+        button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+        }
+        
+        .add-icon {
+            width: 21px;
+            height: 21px;
+            margin-right: 15px;
+        }
+        
+        .right-icon {
+            width: 55px;
+            height: 58px;
+            size: 24px;
+            margin-right: 10px;
+        }
+        
+        .榮譽-icon {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="center-text">待辦</span>
+            <span class="right-icon">必開<br>權限</span>
+            <img src="榮譽.svg" alt="榮譽 Icon" class="榮譽-icon">
+            <img src="add.svg" alt="add Icon" class="add-icon">
+            <img src="menu.svg" alt="Menu Icon" class="menu-icon">
+
+
+        </div>
+
+        <div class="list">
+            <!-- Multiple list items -->
+            <div class="list-item">
+                <div class="placeholder"></div>
+                <button>開始</button>
+            </div>
+            <div class="list-item">
+                <div class="placeholder"></div>
+                <button>開始</button>
+            </div>
+            <div class="list-item">
+                <div class="placeholder"></div>
+                <button>開始</button>
+            </div>
+            <!-- Add more list items as needed -->
+        </div>
+    </div>
+</body>
+
+</html>
