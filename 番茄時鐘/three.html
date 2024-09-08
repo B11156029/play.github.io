@@ -61,7 +61,7 @@
             font-size: 80px;
             font-weight: bold;
             color: black;
-            margin-top: 0px;
+            margin-top: 40px;
         }
         
         .footer {
@@ -81,7 +81,7 @@
 
 <body>
     <div class="header">
-        <img src="返回.svg" alt="Back Icon">
+        <img src="返回.svg" alt="Back Icon" onclick="goToOnePage()">
     </div>
 
     <div class="quote">
@@ -96,15 +96,13 @@
     <div class="footer">
         <img src="sun.svg" alt="Sun Icon">
         <img src="music.svg" alt="music Icon" onclick="toggleMusic()">
-        <audio id="myAudio">
+        <audio id="myAudio" loop>
             <source src="heaven.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
         <img src="stop.svg" alt="Stop Icon">
         <img src="replay.svg" alt="Replay Icon">
     </div>
-
-
 
     <script>
         function toggleMusic() {
@@ -116,6 +114,7 @@
                 audio.pause();
             }
         }
+
         let timerElement = document.querySelector('.timer span');
         let timeLeft = 25 * 60; // 25 minutes in seconds
 
@@ -134,6 +133,11 @@
         }
 
         startTimer();
+
+        //返回鍵，進入主頁
+        function goToOnePage() {
+            window.location.href = 'one.html';
+        }
     </script>
 </body>
 
