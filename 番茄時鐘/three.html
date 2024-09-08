@@ -94,32 +94,32 @@
     </div>
 
     <div class="footer">
+        <!-- Sun icon doesn't have a functionality, it's for display only -->
         <img src="sun.svg" alt="Sun Icon">
-        <img src="music.svg" alt="music Icon" onclick="toggleMusic()">
+
+        <!-- Music icon for toggling play/pause -->
+        <img src="music.svg" alt="Music Icon" onclick="toggleMusic()">
+
+        <!-- Audio element -->
         <audio id="myAudio" loop>
             <source src="heaven.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
-        <img src="stop.svg" alt="Stop Icon">
-        <img src="replay.svg" alt="Replay Icon">
+
+        <!-- Stop icon for stopping the audio -->
+        <img src="stop.svg" alt="Stop Icon" onclick="stopMusic()">
+
+        <!-- Replay icon for replaying the audio and resetting timer -->
+        <img src="replay.svg" alt="Replay Icon" onclick="replayMusic()">
     </div>
 
     <script>
-        function toggleMusic() {
-            var audio = document.getElementById("myAudio");
-            console.log("Icon clicked"); // 調試信息
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
-        }
-
         let timerElement = document.querySelector('.timer span');
         let timeLeft = 25 * 60; // 25 minutes in seconds
+        let timerInterval;
 
         function startTimer() {
-            const timerInterval = setInterval(() => {
+            timerInterval = setInterval(() => {
                 let minutes = Math.floor(timeLeft / 60);
                 let seconds = timeLeft % 60;
                 timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -132,9 +132,54 @@
             }, 1000);
         }
 
+        // Initialize the timer when the page loads
         startTimer();
 
-        //返回鍵，進入主頁
+        // Toggle play and pause for the audio
+        function toggleMusic() {
+            var audio = document.getElementById("myAudio");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+        let isPaused = false; // 用來跟蹤計時器和音樂是否已經暫停
+
+        function stopMusic() {
+            var audio = document.getElementById("myAudio");
+            var stopIcon = document.querySelector('img[alt="Stop Icon"]'); // 選取 stop.svg 圖標
+
+            if (!isPaused) {
+                // 暫停音樂和計時器，並將圖標改為 play.svg
+                audio.pause();
+                clearInterval(timerInterval);
+                stopIcon.src = "play.svg"; // 切換圖標為 play.svg
+                console.log("Timer and music paused");
+            } else {
+                // 恢復音樂和計時器，並將圖標改回 stop.svg
+                audio.play();
+                startTimer();
+                stopIcon.src = "stop.svg"; // 切換圖標為 stop.svg
+                console.log("Timer and music resumed");
+            }
+
+            isPaused = !isPaused; // 切換狀態
+        }
+        // Replay music and reset the timer
+        function replayMusic() {
+            var audio = document.getElementById("myAudio");
+            audio.currentTime = 0; // Reset the audio to the beginning
+            audio.play(); // Play the audio again
+
+            // Reset the timer to 25 minutes and restart the countdown
+            timeLeft = 25 * 60; // Reset to 25 minutes in seconds
+            clearInterval(timerInterval); // Clear the current interval
+            startTimer(); // Start a new timer
+            console.log("Replay Icon clicked, timer and music reset");
+        }
+
+        // 返回鍵，進入主頁
         function goToOnePage() {
             window.location.href = 'one.html';
         }
